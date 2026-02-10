@@ -1,13 +1,20 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import Avatar from './components/Avatar.jsx'
+import SpeechBubble from './components/SpeechBubble.jsx'
 import './App.css'
+import Typewriter from './components/TypewriterText.jsx'
+import DialogueController from './components/DialogueController.jsx'
+
 
 function App() {
   const [count, setCount] = useState(0)
 
-  return (
+    return (
     <>
+      <DialogueController/>
+      <Avatar />
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
