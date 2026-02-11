@@ -9,7 +9,7 @@ function SpeechBubble({children, onClick}){
             justifyContent: 'center',
             alignItems: 'center',
             color: 'white',
-            fontSize: '66px',
+            fontSize: '56px',
             fontWeight: 'bold',
             position: 'relative'
     };
