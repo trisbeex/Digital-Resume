@@ -1,5 +1,6 @@
 import avatar from '../assets/tris+peace.png'
 
+
 function Avatar(){
     return (
     <div>

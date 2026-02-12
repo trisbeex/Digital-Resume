@@ -2,12 +2,30 @@ import React, {useState} from 'react';
 import SpeechBubble from './SpeechBubble.jsx';
 import Typewriter from './TypewriterText.jsx'
 
+import boozyHappy from "../assets/avatars/boozyHappy.png";
+import happy from "../assets/avatars/happy.png";
+import thinking from "../assets/avatars/thinking.png";
+import modest from "../assets/avatars/modest.png";
+import determined from "../assets/avatars/determined.png";
+import cool from "../assets/avatars/cool.png";
+import shocked from "../assets/avatars/shocked.png";
+
 
 function DialogueController(){
 
-    const introDialogue = ["Hi, I'm Tristan!", 
-    "I got tired of sending my resume the boring way so I made this!", 
-    "So what should we do?"];
+    const expressionMap = {
+    boozyHappy,
+    happy,
+    thinking,
+    modest,
+    determined,
+    cool,
+    shocked
+    };
+
+    const introDialogue = [{text: "Hi, I'm Tristan!", expression: "cool"}, 
+    {text: "I got tired of sending my resume the boring way so I made this!", expression: "cool"}, 
+    {text: "So what should we do?", expression: "thinking"}];
         
     const choices = [
         {id: 1, text:"Let's see your resume."}, 
@@ -16,15 +34,15 @@ function DialogueController(){
 
     
     const story = [
-        "Oh! Uh...", 
-        "Gotta say I actually wasn't expecting that one...",
-        "Well let's see...",
-        "Once there was a charming graduate student with a lot of potential...",
-        "Who was trying to start his career, and a really good looking recruiter decided to help hire him-",
-        "After that, the recruiter's life was filled with a ton of wealth and good fortune!",
-        "Good story huh?"];
+        {text: "Oh! Uh...", expression: "shocked"}, 
+        {text: "Gotta say I actually wasn't expecting that one...", expression: "modest"},
+        {text: "Well let's see...", expression: "thinking"},
+        {text: "Once there was a charming graduate student with a lot of potential...", expression: "determined"},
+        {text: "Who was trying to start his career, and a really good looking recruiter decided to help hire him-", expression: "determined"},
+        {text: "After that, the recruiter's life was filled with a ton of wealth and good fortune!", expression: "happy"},
+        {text: "Good story huh?", expression: "modest"}];
     
-    const story2 = ["That was probably my best story, heh."]
+    const story2 = [{text: "That was probably my best story, heh.", express: "modest"}]
 
     const [curr_index, setIndex] = useState(0);
     const [complete, setComplete] = useState(false);
@@ -95,7 +113,7 @@ function DialogueController(){
                 <SpeechBubble onClick={onBubbleClick}>
                     <Typewriter
                         wordStyles={{Tristan: "highlight", recruiter: "highlight", Oh: "important"}}
-                        text={dialogue[curr_index]}
+                        text={dialogue[curr_index].text}
                         onComplete={onTypingComplete}/>
                 </SpeechBubble>
             )}
@@ -110,6 +128,12 @@ function DialogueController(){
 
                     </button>))}
                 </div>)}
+
+            <img
+                src={expressionMap[dialogue[curr_index].expression]}
+                className="avatar"
+                alt="Avatar"
+            />
 
             {showRes && (
             <div className="pdf-overlay">
